@@ -7,5 +7,8 @@ class Solution:
                 groups[key].append(word)
             else:
                 groups[key] = [word]
-        result = list(groups.values())
-        return result
+        
+        lst=[]
+        for i in groups.values():
+            lst.append(i)
+        return lst
