@@ -1,5 +1,6 @@
 class Solution:
     def singleNumber(self, nums: List[int]) -> List[int]:
+
         res=[]
         indi=0
         for num in nums:
@@ -10,7 +11,7 @@ class Solution:
         b=0
 
         for x in nums:
-            if x&diff:
+            if x&diff!=0:
                 a^=x
 
             else:
