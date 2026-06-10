@@ -1,30 +1,30 @@
-class MinStack:
+# class MinStack:
 
-    def __init__(self):
-        self.stack=[]
-        self.minStack=[]
+#     def __init__(self):
+#         self.stack=[]
+#         self.minStack=[]
 
-        # self.mn=float('inf')
+#         # self.mn=float('inf')
 
-    def push(self, val: int) -> None:
-        self.stack.append(val)
+#     def push(self, val: int) -> None:
+#         self.stack.append(val)
 
-        # if val<self.mn:
-        #     self.mn=min(self.mn,val)
-        if len(self.minStack)==0 or val<=self.minStack[-1]:
-            self.minStack.append(val)
+#         # if val<self.mn:
+#         #     self.mn=min(self.mn,val)
+#         if len(self.minStack)==0 or val<=self.minStack[-1]:
+#             self.minStack.append(val)
 
-    def pop(self) -> None:
-        poppy=self.stack.pop()
-        if poppy==self.minStack[-1]:
-            self.minStack.pop()
+#     def pop(self) -> None:
+#         poppy=self.stack.pop()
+#         if poppy==self.minStack[-1]:
+#             self.minStack.pop()
         
 
-    def top(self) -> int:
-        return self.stack[-1]
+#     def top(self) -> int:
+#         return self.stack[-1]
 
-    def getMin(self) -> int:
-        return self.minStack[-1]
+#     def getMin(self) -> int:
+#         return self.minStack[-1]
         # mn=float('inf')
         # for i in range(len(self.stack)):
         #     if self.stack[i] < mn:
