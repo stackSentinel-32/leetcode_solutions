@@ -12,12 +12,24 @@ class Solution:
         #     res=max(res,right-left+1)
         # return res
 
+        # maxi=0
+        # for i in range(len(s)):
+        #     taken=set()
+        #     for j in range(i,len(s)):
+        #         if s[j] in taken:
+        #             break
+        #         maxi=max(maxi,j-i+1)
+        #         taken.add(s[j])
+        # return maxi
+
+        taken={}
+        l=0
+        r=0
         maxi=0
-        for i in range(len(s)):
-            taken=set()
-            for j in range(i,len(s)):
-                if s[j] in taken:
-                    break
-                maxi=max(maxi,j-i+1)
-                taken.add(s[j])
+        while r<len(s):
+            if s[r] in taken:
+                l=max(l,taken[s[r]]+1)
+            maxi=max(maxi,r-l+1)
+            taken[s[r]]=r
+            r+=1
         return maxi
