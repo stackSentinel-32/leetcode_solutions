@@ -2,7 +2,7 @@ class Solution:
     def countAndSay(self, n: int) -> str:
         s="1"
 
-        for _ in range(n-1):
+        for tc in range(n-1):
             res=""
             i=0
 
