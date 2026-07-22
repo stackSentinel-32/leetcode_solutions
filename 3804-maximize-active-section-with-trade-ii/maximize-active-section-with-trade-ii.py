@@ -7,7 +7,6 @@ class Solution:
         n = len(s)
         total_ones = s.count('1')
 
-        # 1) find maximal runs of '1'
         runs = []
         i = 0
         while i < n:
@@ -25,7 +24,7 @@ class Solution:
         q_arr = [q for p, q in runs]
 
         a_arr = [0] * m 
-        b_arr = [0] * m   # end of the 0-run immediately after run k
+        b_arr = [0] * m   
         for k in range(m):
             a_arr[k] = 0 if k == 0 else runs[k - 1][1] + 1
             b_arr[k] = (n - 1) if k == m - 1 else runs[k + 1][0] - 1
