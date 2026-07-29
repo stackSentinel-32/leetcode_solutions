@@ -17,7 +17,7 @@ class Solution:
         left=[]
         length=sum(half)
 
-        for _ in range(length):
+        for z in range(length):
             for i in range(26):
                 if half[i]==0:
                     continue
