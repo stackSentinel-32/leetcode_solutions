@@ -2,32 +2,83 @@ class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
         rows=len(grid)
         cols=len(grid[0])
-        grid_copy=deepcopy(grid)
-        fresh_cnt=0
+        copy=deepcopy(grid)
         queue=deque()
-
+        cnt=0
         for r in range(rows):
             for c in range(cols):
-                if grid_copy[r][c]==2:
+                if copy[r][c]==2:
                     queue.append((r,c))
-                elif grid_copy[r][c]==1:
-                    fresh_cnt+=1
+                if copy[r][c]==1:
+                    cnt+=1
+        
         min=0
-        while len(queue) !=0 and fresh_cnt>0:
+        while len(queue)!=0 and cnt>0:
             min+=1
-            total_rotten=len(queue)
-            for i in range(total_rotten):
-                i,j=queue.popleft()
-                for dx,dy in [(1,0),(-1,0),(0,1),(0,-1)]:
-                    new_i,new_j=i+dx,j+dy
-                    if new_i<0 or new_i==rows or new_j<0 or new_j==cols:
+            tr=len(queue)
+            for _ in range(tr):
+                x,y=queue.popleft()
+                for dx,dy in [(1,0),(0,1),(-1,0),(0,-1)]:
+                    new_x,new_y=x+dx,y+dy
+                    if new_x<0 or new_x>=rows or new_y<0 or new_y>=cols:
                         continue
-                    if grid_copy[new_i][new_j]==0 or grid_copy[new_i][new_j]==2:
+                    if copy[new_x][new_y]==0 or copy[new_x][new_y]==2:
                         continue
-                    
-                    fresh_cnt-=1
-                    grid_copy[new_i][new_j]=2
-                    queue.append((new_i,new_j))
-        if fresh_cnt>0:
+                    cnt-=1
+                    copy[new_x][new_y]=2
+                    queue.append((new_x,new_y))
+        if cnt>0:
             return -1
         return min
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        # rows=len(grid)
+        # cols=len(grid[0])
+        # grid_copy=deepcopy(grid)
+        # fresh_cnt=0
+        # queue=deque()
+
+        # for r in range(rows):
+        #     for c in range(cols):
+        #         if grid_copy[r][c]==2:
+        #             queue.append((r,c))
+        #         elif grid_copy[r][c]==1:
+        #             fresh_cnt+=1
+        # min=0
+        # while len(queue) !=0 and fresh_cnt>0:
+        #     min+=1
+        #     total_rotten=len(queue)
+        #     for i in range(total_rotten):
+        #         i,j=queue.popleft()
+        #         for dx,dy in [(1,0),(-1,0),(0,1),(0,-1)]:
+        #             new_i,new_j=i+dx,j+dy
+        #             if new_i<0 or new_i==rows or new_j<0 or new_j==cols:
+        #                 continue
+        #             if grid_copy[new_i][new_j]==0 or grid_copy[new_i][new_j]==2:
+        #                 continue
+                    
+        #             fresh_cnt-=1
+        #             grid_copy[new_i][new_j]=2
+        #             queue.append((new_i,new_j))
+        # if fresh_cnt>0:
+        #     return -1
+        # return min
